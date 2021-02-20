@@ -59,320 +59,136 @@ The Gravatar ir a service that allows a global avatar accordding to a registered
 
 # Project requirements
 
-:warning: **Lembre-se que o seu projeto só será avaliado se estiver passando pelos checks do Linter** :warning:
+### Login page
 
-Nesse projeto, a pessoa que joga deve conseguir completar o jogo e conseguir ver seu placar depois de responder todas as 5 perguntas, além de acessar a tela de configurações e de ranking. Lembrem-se de utilizar os conhecimentos adquiridos ao longo dos últimos projetos nas ferramentas do React como o Router, Link, Redux e testes para ajudá-los a completar os requisitos.
+#### 1. Creat a login page, and the player needs to input information in it to start the game.
 
-### Tela de início/login
+ - Create a page to identify the user, with name and email. It will be the inicial page of your app. 
+ - The 'start' button should be disable as long as the information is not valid.
 
-#### 1. Crie a tela de login, onde a pessoa que joga deve preencher as informações para iniciar um jogo
+ * You should create a field to the player to input the name and one for the email.<br>
+ * Use the following data-testid `data-testid="input-player-name"` for the name, and `data-testid="input-gravatar-email"` for the email.
+ * Use 'data-testid="btn-play" for the start button. The text should be "Jogar".
+ - The 'start' button should be disable as long as the information is not valid.  
 
-  **PRIORIDADE 0** - Criar a tela de login contendo as informações de nome e email, onde a pessoa que joga deve conseguir escrever seu nome e email nos inputs e o botão de jogar deve estar desabilitado caso não tenha alguma dessas informações.
+#### 2. Create the 'Jogar' button
+
+  - The button should require an API service a token and redirect the player to the game page
+
+  * After the click event, the player should be redirected to the game page
+  * In the click event, a require should be made do Trivia API to get the player token
+  * The token should be saved in app and used in the following requirements
+  * Save the token in the `LocalStorage`, using thekey `token`  
+
+#### 3. Create a button that leads the player to a setting page
+
+  - The inicial page should have a button to redirect to settings page
+
+  * Use `data-testid=`btn-settings``
+  * The settings page should have a title with the attribute `data-testid=`settings-title``
+
+### Game page
+
+#### 4. Create a header element with the player data
+
+  - The header should have the name, the gravatar photo and the socre of the player
   
-Recomendamos que o Redux e o Router sejam configurados nesse requisito, para que os demais possam ser feitos paralelamente!
+  * The profile picture should be provided by the gravatar, use `data-testid=`header-profile-picture``
+  * The player name should have the attribute `data-testid=`header-player-name``
+  * The inicial score should be 0. Use `data-testid=`header-score``
+ 
+#### 5. Create the game page with the question information
 
-  **Observações técnicas**
+  - A requirement to the API should be done to get the questions, category and alternatives
 
-  * A pessoa que joga deve conseguir escrever seu nome no input de texto
-  * A pessoa que joga deve conseguir escrever seu email no input de email
-  * O botão "Jogar" deve ser desabilitado caso email e/ou nome não estejam preenchidos
-  * O campo de texto para o nome deve possuir o atributo `data-testid` com o valor `input-player-name`
-  * O campo de texto para o email deve possuir o atributo `data-testid` com o valor `input-gravatar-email`
-  * O botão "Jogar" que leva a pessoa ao jogo deve possuir o atributo `data-testid` com o valor `btn-play`
-
-  **O que será avaliado**
-
-  * Escreve o nome da pessoa jogadora
-  * Escreve o email da pessoa jogadora
-  * Botão Jogar desabilitado quando pessoa jogadora não preencher nenhum campo
-  * Botão Jogar desabilitado quando pessoa jogadora escrever apenas o nome
-  * Botão Jogar desabilitado quando pessoa jogadora escrever apenas o email
-  * Botão Jogar habilitado quando pessoa jogadora preencher os campos de nome e email
-
-#### 2. Crie o botão de iniciar o jogo
-
-  **PRIORIDADE 1** - O botão "Jogar" deve fazer requisição para a API para obter o token e redirecionar a pessoa para tela de jogo
-
-  **Observações técnicas**
-
-  * Após clicar no botão "Jogar", a pessoa deve ser redirecionada para a tela do jogo
-  * Ao clicar no botão "Jogar", um requisição para a API do Trivia deve ser feita para obter o _token_ de jogador
-  * O _token_ deve ser armazenado na aplicação e enviado em todas as requisições seguintes.
-  * Salve no `LocalStorage` o _token_ recebido utilizando a chave `token`
-
-  **O que será avaliado**
-
-  * Inicia jogo salvando um token de jogador
-
-#### 3. Crie um botão que leva a pessoa para tela de configuração
-
-  **PRIORIDADE 1** - A tela inicial deve conter um botão que leve para a configuração do jogo
-
-  **Observações técnicas**
-
-  * O botão que leva a pessoa a tela de configurações deve possuir o atributo `data-testid` com o valor `btn-settings`
-  * A tela de configurações deve possuir um título com o atributo `data-testid` contendo o valor `settings-title`
-
-  **O que será avaliado**
-
-  * O botão deve existir na página
-  * A tela de configurações deve possuir um título
-
-### Tela de jogo
-
-#### 4. Crie um _header_ que deve conter as informações da pessoa jogadora
-
-  **PRIORIDADE 1** - O header deve conter as informações sobre a pessoa jogadora, como a imagem do Gravatar, o nome e o placar
-
-  **Observações técnicas**
-
-  * A imagem do perfil vinda do Gravatar em um elemento que deve possuir o atributo `data-testid` com o valor `header-profile-picture`
-  * O nome da pessoa em um elemento que deve possuir o atributo `data-testid` com o valor `header-player-name`
-  * O placar zerado em um elemento que deve possuir o atributo `data-testid` com o valor `header-score`
-
-  **O que será avaliado**
-
-  * A imagem do Gravatar está presente no header
-  * O nome da pessoa está presente no header
-  * O placar zerado está presente no header
-
-#### 5. Crie a página de jogo que deve conter as informações relacionadas à pergunta
-
-  **PRIORIDADE 1** - Deve ser feita a requisição para a API para popular o jogo com as perguntas, categoria e alternativas
-
-  **Observações técnicas**
-
-  * A pergunta e suas alternativas de resposta devem ser recebidas da API do Trivia
-  * A categoria da pergunta (campo _category_) deve ser exibida em um elemento com o atributo `data-testid` com o valor `question-category` para a pessoa que está jogando
-  * O texto da pergunta (campo _question_) deve ser exibido em um elemento com o atributo `data-testid` com o valor `question-text` para a pessoa que está jogando
-  * O texto com as alternativas devem ser exibidos seguindo as regras abaixo:
-    * O elemento com a alternativa correta deve possuir o atributo `data-testid` com o valor `correct-answer`
-    * Os elementos com as alternativas incorretas devem possuir o atributo `data-testid` com o valor `wrong-answer-${index}`, com `${index}` iniciando com o valor `0`
-    * As alternativas devem ser exibidas em ordem aleatória
-    * Dica: utilize botões (`<button/>`) para as alternativas
+  * The question category should have the attribute `data-testid=`question-category`
+  * The question should have the attribute `data-testid=`question-text``
+  * The alternative answers should follow the settings bellow:
+    * The correct alternative should have the attribute `data-testid=`correct-answer``
+    * The wrong alternatives should have the attribute `data-testid= `wrong-answer-${index}``, with `${index}` starting in `0`
+    * The altertives should be displayed randomly
   
-  **O que será avaliado**
+#### 6. The should be just one correct alternative for each question
+ 
+#### 7. On click event in some alternative, the correct one should get green and the wrong ones should get red.
 
-  * A categoria da pergunta está presente
-  * O texto da pergunta está presente
-  * As alternativas devem estar presentes
+  * Use css attribute `border` with `3px solid rgb(6, 240, 15)` to the correct answer
+  * Use css attribute `border` with `3px solid rgb(255, 0, 0)` to the wrong answer
 
-#### 6. Desenvolva o jogo onde só deve ser possível escolher uma resposta correta por pergunta
+#### 8. Create a 30 seconds timer to the player to answert he question
 
-  **PRIORIDADE 2** - A pergunta deve ter apenas uma alternativa correta
+  - If the player doesn't answer the question in 30 seconds, the score should be considered 0 and the answer wrong.
+  * Wrong answer score 0.  
+  * After 30 seconds, the alternatives should be disabled.
 
-  **Observações técnicas**
+#### 9. Create a scoreboard following the settings bellow: 
 
-  * Apenas uma alternativa deve ser a correta
+  - The current total score should be saved in the 'localStorage'
+  - On click in the correct alternative, the player will score according to rules bellow  
+  * The score rule is: `10 + (timer * difficulty)`, where timer is the rest of the timer time ans difficulty is `hard: 3, medium: 2, easy: 1`, According to the question. 
 
-  **O que será avaliado**
+#### 10. A next button should be displayed after the player answer the question
 
-  * A quantidade de respostas corretas deve ser 1
+  *  Use `data-testid=`btn-next``
+  * After the click event on next button, the next question should be displayed
 
-#### 7. Desenvolva o estilo que, ao clicar em uma resposta, a correta deve ficar verde e as incorretas, vermelhas
+#### 11. The game should display 5 questions to the player
 
-  **PRIORIDADE 2** - Ao responder a pergunta, se a alternativa for correta, deve ficar verde, caso contrário, vermelha
+  - The game should be 5 questions, and for each new question the should be reset. 
+  - After answering the 5 questions, the player should be redirect to the feedback page.
 
-  **Observações técnicas**
+### Feedback page
 
-  * Utilize a propriedade css `border` com o valor `3px solid rgb(6, 240, 15)` para a alternativa correta.
-  * Utilize a propriedade css `border` com o valor `3px solid rgb(255, 0, 0)` para as alternativas incorretas.
+#### 12. Create a header for feedback page following the settings bellow
 
-  **O que será avaliado**
+ - The header should have the name, the gravatar photo and the socre of the player
+  
+  * The profile picture should be provided by the gravatar, use `data-testid=`header-profile-picture``
+  * The player name should have the attribute `data-testid=`header-player-name``
+  * The inicial score should be 0. Use `data-testid=`header-score``
 
-  * Verifica cor da alternativa correta quando acerta a questão
-  * Verifica a cor das alternativas incorretas quando acerta a questão
-  * Verifica cor da alternativa correta quando erra a questão
-  * Verifica a cor das alternativas incorretas quando erra a questão
+#### 13. Create a feedback message to be displayed gor the player
 
-#### 8. Desenvolva um timer onde a pessoa que joga tem 30 segundos para responder
+  - The feedback page should display different message according to player performance
 
-  **PRIORIDADE 3** - A página deve conter um timer que com o tempo máximo de 30 segundos para responder, caso ultrapasse o tempo, a pergunta é considerada errada
+  * The message "Podia ser melhor..." if the player hit less than 3 questions
+  * The message "Mandou bem!" if the player hit 3 or more questions
+  * Use `data-testid=`feedback-text`
+  
+#### 14. Display the information of the session
 
-  **Observações técnicas**
+  - The feedback page should display the total score and how many correct answers the player hit
 
-  * Caso a pergunta não seja respondida a tempo, a resposta é considerada como errada
-  * Respostas incorretas não somam pontos ao placar
-  * Um temporizador deve aparecer na tela da pessoa, começando de 30 segundos e indo de forma decrescente até zero
-  * Após o tempo se esgotar, todos os botões das alternativas devem ser desabilitados
+  * Use `data-testid=`feedback-total-score` for the score
+  * Use data-testid=`feedback-total-question`for the number of correct answers
 
-  Dica: Lembre-se do setTimeout e do setInterval
+#### 15. Create the play again option
 
-  **O que será avaliado**
+   - The player should have the "Jogar novamente" option, and be redirect to the inicial pagae
 
-  * Aguarda 5 segundos e responde a alternativa correta
-  * Aguarda mais de 30 segundos para responder
+  * The button should have the attribute `data-testid=`btn-play-again` 
 
-#### 9. Crie o placar com as seguintes características:
+#### 16. Create an option to the player to get in the ranking page
 
-  **PRIORIDADE 3** - Ao clicar na resposta correta, pontos devem ser somados no placar da pessoa que está jogando
+   - There should be a button to redirect to ranking page
 
-  **Observações técnicas**
+  * Use `data-testid`=`btn-ranking`
+  * The ranking page should have a title with the attribute `data-testid=`ranking-title`
 
-  * Você deve salvar a pontuação **atual** no `localStorage`
-  * Leia a seção "Implementações técnicas" para mais detalhes
-  * Respostas erradas não devem somar ao placar
-  * A fórmula para cálculo dos pontos por pergunta é: `10 + (timer * dificuldade)`, onde timer é o tempo restante no contador de tempo e dificuldade é `hard: 3, medium: 2, easy: 1`, dependendo da pergunta. Exemplo: Se no momento da resposta correta o timer estiver contando 17 segundos, e a dificuldade da pergunta é 2 (média), a pontuação deve ser: `10 + (17 * 2) = 44`
+### Ranking page
 
-   **O que será avaliado**
+#### 17. create the ranking page
 
-   * Soma pontos ao acertar uma questão
-   * Não soma pontos ao errar uma questão
+  - The ranking page should have a list, with the image, name and total score of the players and be saved at the local storage.
 
-#### 10. Crie um botão de "próxima" que apareça após a resposta ser dada
+  * The list should be organized in decreasing order by the total score
+  * Each list line should have `data-testid`=`player-name-${index}`, where `${index}` starts in 0
+  * Each list line should have `data-testid`=`player-score-${index}`, where `${index}` starts in 0
+ 
+#### 18. Create a button to lead to the beginning
 
-  **PRIORIDADE 3** - Deve aparecer um botão de "Próxima" (pergunta) após a resposta ser dada
+  - The button should redirect to the login page 
 
-  **Observações técnicas**
-
-  * O botão "Próxima" deve possuir o atributo `data-testid` com o valor `btn-next`
-  * Ao clicar nesse botão, a próxima pergunta deve aparecer na tela
-
-  **O que será avaliado**
-
-  * O botão de próxima pergunta não deve ser visível o início do jogo
-  * Botão de próxima pergunta é visível quando a pergunta é respondida corretamente
-  * Botão de próxima pergunta é visível quando a pergunta é respondida incorretamente
-
-#### 11. Desenvolva o jogo de forma que a pessoa que joga deve responder 5 perguntas no total
-
-  **PRIORIDADE 2** - O jogo deve ser composto por 5 perguntas, onde, a cada nova pergunta, o timer é reiniciado e após respondê-las, a pessoa que joga deve ser redirecionada para a tela de feedback
-
-  **Observações técnicas**
-
-  * A cada nova pergunta o temporizador deve ser reiniciado para 30 segundos
-  * Após a quinta pergunta, o botão "Próxima" deve redirecionar a pessoa para a tela de _Feedback_
-  * Para perguntas com type:"boolean", mostrar somente 2 campos (um para cada resposta possível)
-  * Para perguntas com type:"multiple", mostrar a quantidade necessária de campos (um para cada resposta possível)
-
-  **O que será avaliado**
-
-  * Acerta todas as perguntas
-  * Erra todas as perguntas
-  * Redireciona para a tela de _feedback_ após a quinta pergunta
-
-### Tela de feedback
-
-#### 12. Desenvolva o header de _feedback_ que deve conter as informações da pessoa jogadora
-
-  **PRIORIDADE 0** - A tela de feedback deve conter as informações da pessoa que joga, incluindo o placar com o valor referente ao desempenho no jogo
-
-  **Observações técnicas**
-
-  * A imagem do perfil vinda do Gravatar em um elemento que deve possuir o atributo `data-testid` com o valor `header-profile-picture`
-  * O nome da pessoa em um elemento que deve possuir o atributo `data-testid` com o valor `header-player-name`
-  * O placar com o valor **atual** em um elemento que deve possuir o atributo `data-testid` com o valor `header-score`
-
-  **O que será avaliado**
-
-  * A imagem do Gravatar está presente no header
-  * O nome da pessoa está presente no header
-  * O placar com o valor atual está presente no header
-
-#### 13. Crie a mensagem de _feedback_ para ser exibida a pessoa usuária
-
-  **PRIORIDADE 1** - A tela de feedback deve exibir uma mensagem relacionada ao desempenho da pessoa que jogou
-
-  **Observações técnicas**
-
-  * A mensagem deve ser "Podia ser melhor..." caso a pessoa acerte menos de 3 perguntas
-  * A mensagem deve ser "Mandou bem!" caso a pessoa acerte 3 perguntas ou mais
-  * O elemento da mensagem de _feedback_ deve possuir o atributo `data-testid` com o valor `feedback-text`
-
-  **O que será avaliado**
-
-  * Acertou menos de 3 perguntas
-  * Acertou 3 perguntas
-  * Acertou mais de 3 perguntas
-
-#### 14. Exiba as informações relacionadas aos resultados obtidos para a pessoa usuária
-
-  **PRIORIDADE 1** - A tela de feedback deve exibir informações sobre o desempenho da pessoa, como o placar final e o número de perguntas que acertou
-
-  * O placar final deve ser mostrado em um elemento com o atributo `data-testid` com o valor `feedback-total-score`
-  * O número de perguntas que a pessoa acertou deve ser exibido em um elemento com o atributo `data-testid` com o valor `feedback-total-question`
-
-  **O que será avaliado**
-  * Não acertou nenhuma pergunta
-  * Acertou 2 perguntas
-  * Acertou 4 perguntas
-
-#### 15. Crie a opção para a pessoa jogadora poder jogar novamente
-
-  **PRIORIDADE 3** - A pessoa terá a opção "Jogar novamente", que ao ser clicada, levará para a tela de inicial
-
-  * Ao clicar no botão "Jogar novamente", a pessoa deve ser redirecionada para a tela de início (login)
-  * O botão para jogar novamente deve possuir o atributo `data-testid` com o valor `btn-play-again`
-
-  **O que será avaliado**
-
-  * A pessoa deve ser redirecionada para tela inicial
-
-#### 16. Crie a opção para a pessoa jogadora poder visualizar a tela de _ranking_
-
-  **PRIORIDADE 3** - Deve existir um botão que redirecione a pessoa para a tela de ranking
-
-  **Observações técnicas**
-
-  * Ao clicar no botão "Ver Ranking", a pessoa deve ser redirecionada para a tela de _ranking_
-  * O botão para ir para a tela de _ranking_ deve possuir o atributo `data-testid` com o valor `btn-ranking`
-  * A tela de _ranking_ deve possuir um título com o atributo `data-testid` contendo o valor `ranking-title`
-
-  **O que será avaliado**
-
-  * A pessoa deve ser redirecionada para tela de ranking
-
-### Tela de ranking
-
-#### 17. Crie a tela de _ranking_
-
-  **PRIORIDADE 1** - A tela de ranking deve possuir uma lista com a imagem, nome e pontuação das pessoas que jogaram e deve ficar armazenado no localStorage
-
-  **Observações técnicas**
-
-  * Deve-se mostrar uma lista com a imagem de perfil vinda do Gravatar, nome e pontuação das pessoas que jogaram em ordem decrescente (da maior pontuação para a menor)
-  * Os elementos com os nomes das pessoas que jogaram devem possuir o atributo `data-testid` com o valor `player-name-${index}`, onde `${index}` é iniciado em zero
-  * Os elementos com as pontuações das pessoas que jogaram devem possuir o atributo `data-testid` com o valor `player-score-${index}`, onde `${index}` é iniciado em zero
-  * O ranking deve ser armazenado no navegador através do `localStorage`.
-  * Leia a seção "Implementações técnicas" para mais detalhes
-
-  **O que será avaliado**
-
-  * Deve existir uma pessoa no _ranking_
-  * Devem existir duas pessoas no _ranking_
-  * O _ranking_ deve ser ordenado pela pontuação
-
-#### 18. Crie um botão para ir ao início
-
-  **PRIORIDADE 3** - O botão deve redirecionar a pessoa para a tela de inicial (login)
-
-  **Observações técnicas**
-
-  * Esse botão deve possuir o atributo `data-testid` com o valor `btn-go-home`
-  * Esse botão deve enviar a pessoa para o início (tela de preenchimento dos dados)
-
-  **O que será avaliado**
-
-  * Volta para a tela inicial
-
-### Extra não avaliativo: Tela de configurações
-
-##### 19. Ao mudar o valor do dropdown categoria, apenas perguntas da categoria selecionada devem aparecer para a pessoa que está jogando. Essa configuração será identificada pela chave category no retorno da API;
-
-##### 20. Ao mudar o valor do dropdown dificuldade, apenas perguntas da dificuldade selecionada devem aparecer para a pessoa que está jogando. Essa configuração será identificada pela chave difficulty no retorno da API;
-
-##### 21. Ao mudar o valor do dropdown tipo, apenas perguntas do tipo selecionado devem aparecer para a pessoa que está jogando. Essa configuração será identificada pela chave type no retorno da API.
-
-***Obs: A maneira como a API deve ser estruturada segue o seguinte modelo: https://opentdb.com/api_config.php***
-
----
-
-# Avisos finais
-
-Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
-
-Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
-
+  * Use `data-testid`=`btn-go-home`
+  
 ---
