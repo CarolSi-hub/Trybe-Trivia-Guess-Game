@@ -17,12 +17,11 @@
   "scripts": {
     "cy": "cypress run",
     "cy:open": "cypress open",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:rss": "node ./.next/serverless/scripts/build-rss.js",
+    "start": "node node_modules/react-scripts/scripts/start.js",
+    "build": "node node_modules/react-scripts/scripts/build.js",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
-    "eject": "react-scripts eject",
+    "eject": "node node_modules/react-scripts/scripts/eject.js",
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "lint:styles": "npx stylelint '**/*.css'",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx"
