@@ -20,7 +20,7 @@
   flex-direction: column;
   height: 63vh;
   padding-top: 30px;
-  width: 25vw;
+  width: 19rem;
 }
 
 .login-form-form {
@@ -30,7 +30,7 @@
   flex-direction: column;
   height: 25vh;
   margin-top: 10px;
-  width: 25vw;
+  width: 19rem;
 }
 
 .image-logo {
@@ -64,7 +64,7 @@
   box-shadow: 1px 1px 8px rgb(165, 165, 165);
   height: 26px;
   margin: 7px;
-  width: 15vw;
+  width: 70%;
 }
 
 .login-button {

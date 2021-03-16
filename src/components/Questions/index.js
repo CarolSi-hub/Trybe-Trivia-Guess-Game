@@ -145,7 +145,7 @@ class Questions extends Component {
 
         <div className="header-question-display">
           <h1 className="question-paragraph">{`Question. ${questionIndex + 1}`}</h1>
-          <h2 className="timer">{`Timer: ${counterInterval}` }</h2>
+          <h2 className="timer">{`${counterInterval} s` }</h2>
         </div>
         <div className="category-div">
           <h2

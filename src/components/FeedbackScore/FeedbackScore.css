@@ -10,22 +10,6 @@
   width: 60vw;
 }
 
-.jogar-novamente-button {
-  align-self: center;
-  background-color: rgb(3, 190, 10);
-  border: rgba(255, 255, 255, 0.863);
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.521);
-  color: white;
-  font-size: 1em;
-  font-weight: 600;
-  margin: 5px 27px;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  width: 20%;
-}
-
 .good {
   border-radius: 5px;
   color: rgb(3, 190, 10);
@@ -73,6 +57,5 @@
   padding: 10px;
   text-align: center;
   text-decoration: none;
-  width: 20%;
 }
 

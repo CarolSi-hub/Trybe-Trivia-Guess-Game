@@ -4,7 +4,6 @@
   box-shadow: 1px 1px 5px black;
   display: flex;
   flex-direction: row;
-  height: 15vh;
   justify-content: space-between;
   width: 100vw;
 }
@@ -30,4 +29,19 @@
   margin-left: 60px;
   margin-top: 20px;
   width: 7%;
+}
+
+@media(max-width: 680px) {
+  .game-header {
+  align-items: center;
+  flex-direction: column;
+  }
+
+  .player-header-information-item {
+  width: 40px;
+  }
+
+  .image-logo-header {  
+  width: 20%;
+  } 
 }
