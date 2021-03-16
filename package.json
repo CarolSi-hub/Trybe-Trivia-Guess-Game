@@ -19,6 +19,7 @@
     "cy:open": "cypress open",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:rss": "node ./.next/serverless/scripts/build-rss.js",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
     "eject": "react-scripts eject",
