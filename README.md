@@ -1,7 +1,16 @@
 # Welcome to Trivia!
 
 ## https://trivia-guess-game.vercel.app/
+
+#### Desktop / Mobile /Login<br><br>
 ---
+<img src="./trivia-images/page-login.png" width=400px /> <img src="./trivia-images/trivia-mobile.png" width=155px /><br><br>
+
+#### Desktop / Mobile /Game<br><br>
+<img src="./trivia-images/trivia-question.png" width=400px /> <img src="./trivia-images/trivia-mobile-questions.png" width=155px /><br><br>
+<img src="./trivia-images/trivia-after.png" width=400px /> 
+
+
 
 In this project, you need to be able to:
 
